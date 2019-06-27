@@ -2,7 +2,7 @@ import Vue from 'vue';
 import gd from '../data/gd';
 import Common from '../data/common';
 import ToDoListItem from '../data/todolistitem';
-export default {
+export default Vue.component('AddTask', {
   template: `
   <div class="add_task">
   <h3>添加任务:</h3>
@@ -28,4 +28,4 @@ export default {
       this.taskName = "";
     }
   }
-}
+})

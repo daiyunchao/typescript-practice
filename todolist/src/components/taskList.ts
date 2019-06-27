@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import gd from '../data/gd'
 import ToDoListItem from '../data/todolistitem'
-export default {
+export default Vue.component('TaskList', {
   template: `
   <div class="task_list"><h3>任务列表:</h3>
 
@@ -37,7 +37,7 @@ export default {
     }
   },
   methods: {
-    status_change(id:string, new_status:boolean):void {
+    status_change(id: string, new_status: boolean): void {
       for (let index = 0; index < this.list.length; index++) {
         const item = this.list[index];
         if (item["id"] == id) {
@@ -50,35 +50,35 @@ export default {
     }
   },
   computed: {
-    all_task():boolean {
+    all_task(): boolean {
       if (this.show_type.type == 1) {
         return true;
       }
       return false;
     },
-    not_compate_task():boolean {
+    not_compate_task(): boolean {
       if (this.show_type.type == 2) {
         return true;
       }
       return false;
     },
 
-    complate_task():boolean {
+    complate_task(): boolean {
       if (this.show_type.type == 3) {
         return true;
       }
       return false;
     },
 
-    not_complate_list():Array<ToDoListItem> {
-      return this.list.filter((item:ToDoListItem) => {
+    not_complate_list(): Array<ToDoListItem> {
+      return this.list.filter((item: ToDoListItem) => {
         return item.is_complate == false
       })
     },
-    complate_list():Array<ToDoListItem> {
-      return this.list.filter((item:ToDoListItem) => {
+    complate_list(): Array<ToDoListItem> {
+      return this.list.filter((item: ToDoListItem) => {
         return item.is_complate == true
       })
     }
   }
-}
+})

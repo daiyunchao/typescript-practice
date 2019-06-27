@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import gd from '../data/gd'
 
-export default {
+export default Vue.component('TaskStatus', {
   template: `
   <div class="task-status">
   <span v-if="is_not_complate"><span class="task-status-count">{{not_complate_task_count}}</span>个任务未完成</span>
@@ -46,25 +46,25 @@ export default {
 
   },
   computed: {
-    is_not_complate():boolean {
+    is_not_complate(): boolean {
       if (this.show_type.type == 2) {
         return true;
       }
       return false;
     },
-    is_all_task():boolean {
+    is_all_task(): boolean {
       if (this.show_type.type == 1) {
         return true;
       }
       return false;
     },
-    is_complate_task():boolean {
+    is_complate_task(): boolean {
       if (this.show_type.type == 3) {
         return true;
       }
       return false;
     },
-    not_complate_task_count():number {
+    not_complate_task_count(): number {
       let count = 0;
       this.list.forEach(item => {
         if (item["is_complate"] == false) {
@@ -73,10 +73,10 @@ export default {
       });
       return count;
     },
-    all_task_count():number {
+    all_task_count(): number {
       return this.list.length;
     },
-    complate_task_count():number {
+    complate_task_count(): number {
       let count = 0;
       this.list.forEach(item => {
         if (item["is_complate"] == true) {
@@ -86,4 +86,4 @@ export default {
       return count;
     }
   }
-}
+});
